@@ -1,21 +1,33 @@
+# Toolchain configuration
 [toolchain]
 
+# Feature flags
 [features]
 seeds = true
 skip-lint = false
 
-[programs.devnet]
-counter = "7FBBdRPMWb7eE5pRdpi3GRCNjxwFNwv33BGz3PNHb4bt"
-
+# Program address for localnet
 [programs.localnet]
 counter = "7FBBdRPMWb7eE5pRdpi3GRCNjxwFNwv33BGz3PNHb4bt"
 
-[registry]
-url = "https://api.apr.dev"
+# Program address for devnet
+#[programs.devnet]
+#counter = "7FBBdRPMWb7eE5pRdpi3GRCNjxwFNwv33BGz3PNHb4bt"
 
+# The registry configuration is only necessary when you want to publish 
+#your program to a registry like Anchor's Program Registry (apr.dev).
+#[registry]
+#url = "https://api.apr.dev"
+
+
+# Provider configuration
 [provider]
-cluster = "devnet"
-wallet = "/home/endgame/.config/solana/id.json"
+cluster = "localnet"
+#cluster = "devnet"
+wallet = "/your-home-directory-path/.config/solana/id.json"
 
+# Test scripts
 [scripts]
 test = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts"
+test-increment = "yarn run ts-mocha -p ./tsconfig.json -t 1000000 tests/**/*.ts -g 'Increment'"
+

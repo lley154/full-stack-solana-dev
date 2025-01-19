@@ -22,6 +22,7 @@ describe("counter", () => {
       const txSig = await program.methods.initialize().rpc();
 
       const accountData = await program.account.counter.fetch(counterPDA);
+      console.log("Counter PDA:", counterPDA.toString());
       console.log(`Transaction Signature: ${txSig}`);
       console.log(`Count: ${accountData.count}`);
     } catch (error) {
@@ -34,7 +35,7 @@ describe("counter", () => {
     const transactionSignature = await program.methods.increment().rpc();
 
     const accountData = await program.account.counter.fetch(counterPDA);
-
+    console.log("Counter PDA:", counterPDA.toString());
     console.log(`Transaction Signature: ${transactionSignature}`);
     console.log(`Count: ${accountData.count}`);
   });
